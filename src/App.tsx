@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import DeviceFrame from './components/DeviceFrame';
 import Sidebar from './components/Sidebar';
 import DeviceSelectorModal from './components/DeviceSelectorModal';
@@ -25,8 +24,8 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className="simulator-workspace">
+    <div className="flex h-screen w-screen bg-[#696969] overflow-hidden text-white font-sans">
+      <div className="flex-1 flex justify-center items-center overflow-auto p-10 bg-[#8d8d8d] mr-[70px] scrollbar-hide">
         <DeviceFrame
           url={url}
           device={selectedDevice}

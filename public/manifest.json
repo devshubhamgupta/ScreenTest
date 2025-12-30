@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ScreenTest",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Test websites on various mobile devices instantly.",
   "permissions": [
     "declarativeNetRequest",
@@ -12,12 +12,17 @@
     "<all_urls>"
   ],
   "icons": {
-    "16": "logo.png",
-    "48": "logo.png",
-    "128": "logo.png"
+    "16": "icons/logo.png",
+    "48": "icons/logo.png",
+    "128": "icons/logo.png"
   },
   "action": {
-    "default_title": "Open Mobile Simulator"
+    "default_title": "Open Mobile Simulator",
+    "default_icon": {
+      "16": "icons/logo.png",
+      "48": "icons/logo.png",
+      "128": "icons/logo.png"
+    }
   },
   "background": {
     "service_worker": "background.js"
