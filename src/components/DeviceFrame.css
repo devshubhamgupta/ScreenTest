@@ -1,0 +1,52 @@
+.device-frame-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  will-change: transform;
+  transition: transform 0.2s ease;
+}
+
+.device-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.device-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.device-image.portrait {
+  max-height: 80vh;
+}
+
+.device-image.landscape {
+  max-width: 90vw;
+  transform: rotate(90deg);
+}
+
+.device-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.simulator-iframe {
+  display: block;
+}
+
+.device-info {
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
