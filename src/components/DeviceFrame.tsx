@@ -1,5 +1,6 @@
 import React from 'react';
 import { type Device } from '../constants/devices';
+import './DeviceFrame.css';
 
 interface DeviceFrameProps {
   url: string;
@@ -18,18 +19,15 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({ url, device, orientation, sca
   const deviceImage = isApple ? '/Iphone.png' : '/Android.png';
 
   return (
-    <div 
-      className="flex flex-col items-center origin-top will-change-transform transition-transform duration-200 ease-out" 
-      style={{ transform: `scale(${scale})` }}
-    >
-      <div className="relative flex justify-center items-center">
+    <div className="device-frame-wrapper" style={{ transform: `scale(${scale})` }}>
+      <div className="device-image-container">
         <img 
           src={deviceImage} 
           alt={device.name}
-          className={`block max-w-full h-auto pointer-events-none ${isPortrait ? 'max-h-[80vh]' : 'max-w-[90vw] rotate-90'}`}
+          className={`device-image ${isPortrait ? 'portrait' : 'landscape'}`}
         />
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[20px] bg-white"
+          className="device-screen"
           style={{ 
             width: `${width}px`, 
             height: `${height}px`
@@ -38,12 +36,13 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({ url, device, orientation, sca
           <iframe
             src={url}
             title="Simulator"
-            className="block w-full h-full border-none"
+            className="simulator-iframe"
+            style={{ width: '100%', height: '100%', border: 'none' }}
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           />
         </div>
       </div>
-      <div className="mt-4 text-[#666] text-sm text-center">
+      <div className="device-info">
         {device.name} — {width} x {height}
       </div>
     </div>
