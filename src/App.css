@@ -32,7 +32,7 @@
   align-items: center;
   overflow: auto;
   padding: 40px;
-  background-color: #8d8d8d;;
+  background-color: #8d8d8d;
   margin-right: 70px; /* Space for sidebar */
 }
 
@@ -89,15 +89,6 @@
 
 .screen-container::-webkit-scrollbar {
   display: none;
-}
-
-.simulator-iframe {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
-
-.simulator-iframe::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
 }
 
 .home-indicator {

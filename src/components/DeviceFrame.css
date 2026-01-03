@@ -1,52 +1,51 @@
+/* Root wrapper */
 .device-frame-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center;
-  will-change: transform;
-  transition: transform 0.2s ease;
-}
-
-.device-image-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.device-image {
-  max-width: 100%;
-  height: auto;
+/* Device frame image */
+.device-frame-image {
+  width: 100%;
+  height: 100%;
   display: block;
   pointer-events: none;
+  user-select: none;
 }
 
-.device-image.portrait {
-  max-height: 80vh;
-}
-
-.device-image.landscape {
-  max-width: 90vw;
-  transform: rotate(90deg);
-}
-
-.device-screen {
+/* Screen cutout (glass) */
+.device-screen-area {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: white;
+  z-index: 20;
+  overflow: hidden;             /* clip to curved edges */
+  background: white;
+
+  /* Prevent bleed on rounded corners */
+  clip-path: inset(0 round inherit);
 }
 
+/* Scroll masking container */
+.iframe-mask {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;           
+}
+
+/* REAL scrolling element */
 .simulator-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
   display: block;
 }
 
+/* Label */
 .device-info {
-  margin-top: 15px;
-  color: #666;
-  font-size: 14px;
+  position: absolute;
+  bottom: -28px;
+  width: 100%;
   text-align: center;
+  font-size: 13px;
+  color: #fff;
+  opacity: 0.85;
 }
