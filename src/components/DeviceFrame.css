@@ -1,37 +1,202 @@
-/* Root wrapper */
-.device-frame-wrapper {
-  position: relative;
+/* CSS Chassis Reset */
+.css-chassis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border-radius set inline depending on device */
 }
 
-/* Device frame image */
-.device-frame-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-  user-select: none;
+/* Hide image when using CSS chassis */
+.css-chassis .device-frame-image {
+  display: none;
 }
 
-/* Screen cutout (glass) */
-.device-screen-area {
-  position: absolute;
+/* Device screen area inside the CSS chassis */
+.css-chassis .device-screen-area {
   z-index: 20;
-  overflow: hidden;             /* clip to curved edges */
-  background: white;
-
-  /* Prevent bleed on rounded corners */
-  clip-path: inset(0 round inherit);
+  /* Dimensions set inline */
+  /* Border radius set inline */
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  /* Subtle bezel definition */
 }
 
-/* Scroll masking container */
+/* --- Notches & Islands --- */
+
+/* Standard Notch (iPhone X-14) */
+.notch-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  max-width: 160px;
+  height: 30px;
+  background-color: #000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notch-sensor {
+  width: 50px;
+  height: 6px;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+/* Dynamic Island (iPhone 14 Pro+) */
+.dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 35px;
+  background-color: #000;
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+}
+
+.island-camera {
+  width: 12px;
+  height: 12px;
+  background-color: #1a1a1a;
+  /* Lens reflection simulation */
+  border-radius: 50%;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.island-sensor {
+  width: 8px;
+  height: 8px;
+  background-color: #111;
+  border-radius: 50%;
+}
+
+/* Punch Hole (Android) */
+.punch-hole {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 50%;
+  z-index: 100;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Physical Buttons --- */
+/* Common button style */
+.button-power,
+.button-volume-up,
+.button-volume-down,
+.button-silent {
+  position: absolute;
+  background-color: #2a2a2a;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  /* Behind chassis which is likely z-index auto or context parent */
+}
+
+/* Right Side - Power */
+.button-power {
+  right: -2px;
+  top: 120px;
+  width: 6px;
+  height: 60px;
+  background: linear-gradient(90deg, #444, #2a2a2a);
+  box-shadow:
+    inset 1px 0 1px rgba(255, 255, 255, 0.2),
+    -1px 0 2px rgba(0, 0, 0, 0.5),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+}
+
+/* Left Side - Volume/Silent */
+.button-silent {
+  left: -2px;
+  top: 80px;
+  width: 6px;
+  height: 20px;
+  background: linear-gradient(-90deg, #444, #2a2a2a);
+  box-shadow:
+    inset -1px 0 1px rgba(255, 255, 255, 0.2),
+    1px 0 2px rgba(0, 0, 0, 0.5),
+    -2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.button-volume-up {
+  left: -2px;
+  top: 130px;
+  width: 6px;
+  height: 40px;
+  background: linear-gradient(-90deg, #444, #2a2a2a);
+  box-shadow:
+    inset -1px 0 1px rgba(255, 255, 255, 0.2),
+    1px 0 2px rgba(0, 0, 0, 0.5),
+    -2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.button-volume-down {
+  left: -2px;
+  top: 180px;
+  width: 6px;
+  height: 40px;
+  background: linear-gradient(-90deg, #444, #2a2a2a);
+  box-shadow:
+    inset -1px 0 1px rgba(255, 255, 255, 0.2),
+    1px 0 2px rgba(0, 0, 0, 0.5),
+    -2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+/* --- Misc --- */
+.home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Use transform for centering */
+  width: 35%;
+  height: 5px;
+  background-color: #000;
+  /* Usually black on light content or white on dark. Default black for now. */
+  border-radius: 10px;
+  z-index: 100;
+  opacity: 0.3;
+}
+
 .iframe-mask {
-  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;           
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* REAL scrolling element */
 .simulator-iframe {
   width: 100%;
   height: 100%;
@@ -39,13 +204,168 @@
   display: block;
 }
 
-/* Label */
 .device-info {
   position: absolute;
-  bottom: -28px;
+  bottom: -30px;
   width: 100%;
   text-align: center;
+  color: white;
+  font-family: monospace;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* --- Status Bar --- */
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  /* Padding is now dynamic inline */
+  padding: 0 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 200;
+  pointer-events: none;
+  box-sizing: border-box;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 00;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+/* Specific Adjustments */
+.status-bar.apple.notch {
+  padding-top: 14px;
+  align-items: flex-start;
+}
+
+.status-bar.apple.island {
+  padding-top: 14px;
+  align-items: flex-start;
+}
+
+.status-bar.android.punch-hole {
+  height: 36px;
   font-size: 13px;
-  color: #fff;
-  opacity: 0.85;
+  padding: 0 24px;
+  align-items: center;
+}
+
+/* Left/Right containers */
+.status-left {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  /* Wider to accommodate time */
+  justify-content: center;
+  margin-left: 10px;
+  /* Approximate safe area margin */
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100px;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+/* Android Adjustments */
+.status-bar.android .status-left {
+  justify-content: flex-start;
+  margin-left: 0;
+}
+
+.status-bar.android .status-right {
+  justify-content: flex-end;
+  margin-right: 0;
+}
+
+/* Icons */
+
+.icon-battery {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.battery-body {
+  width: 22px;
+  height: 11px;
+  border: 1px solid currentColor;
+  /* Inherit black/white */
+  border-radius: 3px;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.battery-level {
+  width: 60%;
+  /* Fake percentage */
+  height: 100%;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+
+.battery-tip {
+  width: 2px;
+  height: 4px;
+  background-color: currentColor;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  margin-left: 1px;
+}
+
+/* Icons */
+.icon-signal,
+.icon-wifi,
+.icon-battery {
+  display: flex;
+  align-items: center;
+}
+
+/* SVG Notch Container */
+.notch-container-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 34px;
+  z-index: 300;
+  /* Ensure on top of Browser Bar (100) and Status Bar (200) */
+  pointer-events: none;
+}
+
+.notch-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+}
+
+.notch-speaker {
+  width: 50px;
+  height: 4px;
+  background-color: #222;
+  border-radius: 4px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+  /* Position it higher in the notch */
+}
+
+/* Remove old notch styles */
+.notch-container {
+  display: none;
 }

@@ -28,18 +28,16 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       // Calculate available height (subtract padding for workspace margins)
-      // 80px allows for some breathing room top/bottom
       const availableHeight = window.innerHeight - 80; 
       
       const deviceHeight = orientation === 'portrait' 
-        ? selectedDevice.height 
-        : selectedDevice.width;
-      
+          ? selectedDevice.height 
+          : selectedDevice.width;
+        
       // The Frame adds extra height (bezel). 
-      // We assume roughly 5-6% extra height for the frame around the screen.
-      const totalFrameHeight = deviceHeight * 1.06;
+      // Approx 1.06 factor or simpler + 60px padding
+      const totalFrameHeight = deviceHeight + 100; // Adding simplified buffer for frame
 
-      // If device frame is taller than available space, scale it down
       if (totalFrameHeight > availableHeight) {
         setScale(availableHeight / totalFrameHeight);
       } else {
