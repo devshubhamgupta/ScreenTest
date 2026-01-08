@@ -237,17 +237,6 @@
   letter-spacing: 0.2px;
 }
 
-/* Specific Adjustments */
-.status-bar.apple.notch {
-  padding-top: 14px;
-  align-items: flex-start;
-}
-
-.status-bar.apple.island {
-  padding-top: 14px;
-  align-items: flex-start;
-}
-
 .status-bar.android.punch-hole {
   height: 36px;
   font-size: 13px;
@@ -279,36 +268,7 @@
   margin-right: 10px;
 }
 
-/* Android punch-hole - same layout as iPhone (time left, icons right) */
-.status-bar.android.punch-hole .status-left {
-  margin-left: 16px;
-  justify-content: flex-start;
-  width: auto;
-  flex: 0 0 auto;
-}
-
-.status-bar.android.punch-hole .status-right {
-  margin-right: 16px;
-  justify-content: flex-end;
-  width: auto;
-  flex: 0 0 auto;
-}
-
-.status-bar.android.punch-hole .status-left .time {
-  color: #000;
-  font-weight: 500;
-}
-
-.status-bar.android.punch-hole .status-right svg,
-.status-bar.android.punch-hole .status-right .icon-wifi svg,
-.status-bar.android.punch-hole .status-right .icon-battery svg {
-  color: #000;
-  fill: #000;
-}
-
-
 /* Icons */
-
 .icon-battery {
   display: flex;
   align-items: center;

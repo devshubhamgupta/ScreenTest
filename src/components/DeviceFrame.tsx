@@ -191,18 +191,6 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
             transform: isPortrait ? 'translateX(-50%)' : 'translateY(-50%)' 
           }}></div>
         )}
-        
-        {/* Home Indicator */}
-        {(device.type === 'apple' && device.name !== 'iPhone SE 2016' && device.notchType !== 'bezel') && (
-           <div 
-             className="home-indicator"
-             style={{
-               bottom: 8,
-               left: '50%',
-               transform: 'translateX(-50%)',
-             }}
-           ></div>
-        )}
 
       </div> 
       </div>
