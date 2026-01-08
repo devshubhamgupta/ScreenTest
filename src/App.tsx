@@ -6,7 +6,7 @@ import DeviceSelectorModal from './components/DeviceSelectorModal';
 import { devices } from './constants/devices';
 
 function App() {
-  const [url, setUrl] = useState('https://poledium.net');
+  const [url, setUrl] = useState('https://bscscan.com');
   const [selectedDevice, setSelectedDevice] = useState(devices.find(d => d.name === 'iPhone 12') || devices[0]);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [scale, setScale] = useState(1);

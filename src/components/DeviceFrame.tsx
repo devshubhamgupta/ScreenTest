@@ -55,10 +55,10 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
     ? '0 0 0 4px #2a2a2a, 0 20px 40px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.1)'
     : '0 0 0 4px #333, 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.5)';
 
-  // Button Style matching chassis
+  // Button Style matching chassis - slightly differentiated
   const buttonBackground = isApple
-    ? 'linear-gradient(90deg, #6e6e6e, #3a3a3a)' // Lighter Metallic Grey for contrast
-    : undefined; // Use CSS default (Dark)
+    ? 'linear-gradient(90deg, #3a3a3a, #1a1a1a)' // Slightly darker than chassis for subtle difference
+    : 'linear-gradient(90deg, #242424, #1a1a1a)'; // Slightly lighter than chassis (#1a1a1a) for Android
 
   // Calculate content padding to avoid status bar overlap
   let contentPaddingTop = 0;
@@ -91,7 +91,7 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
           height: frameHeight,
           borderRadius: `${borderRadius}px`,
           background: chassisBackground, 
-          boxShadow: chassisBoxShadow,
+          // boxShadow: chassisBoxShadow,
           padding: bezelSize,
           position: 'relative',
           transform: `scale(${scale})`,
