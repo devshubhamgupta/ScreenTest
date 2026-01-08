@@ -205,12 +205,6 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
         )}
 
       </div> 
-      {/* End Screen Area */}
-      </div>
-      {/* End Chassis */}
-
-      <div className="device-info">
-        {device.name} — {device.width} × {device.height}
       </div>
     </div>
   );
