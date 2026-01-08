@@ -6,8 +6,8 @@ import DeviceSelectorModal from './components/DeviceSelectorModal';
 import { devices } from './constants/devices';
 
 function App() {
-  const [url, setUrl] = useState('https://bscscan.com');
-  const [selectedDevice, setSelectedDevice] = useState(devices.find(d => d.name === 'iPhone 12') || devices[0]);
+  const [url, setUrl] = useState('https://poxscan.io');
+  const [selectedDevice, setSelectedDevice] = useState(devices.find(d => d.name === 'iPhone 15 Plus') || devices[0]);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [scale, setScale] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
