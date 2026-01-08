@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onDeviceClick, onRotateClick, orienta
         onClick={onRotateClick}
         title="Rotate Device"
       >
-        <Ratio size={24} />
+       <img src="/rotate.png" alt="rotate-img"/>
       </button>
     </div>
   );
