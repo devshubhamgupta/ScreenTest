@@ -61,7 +61,12 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
   if (isApple) {
       contentPaddingTop = 48; // Standard iOS status bar height
   } else if (device.type === 'android') {
-      contentPaddingTop = 36; // Standard Android status bar height
+      // Only for Galaxy A12 and Huawei P30 PRO
+      if (device.name === 'Galaxy A12' || device.name === 'Huawei P30 PRO') {
+          contentPaddingTop = 40; // Standard Android status bar height for these devices
+      } else {
+          contentPaddingTop = 0; // No padding for other Android devices
+      }
   } else if (device.notchType === 'bezel') {
       contentPaddingTop = 24; // Older devices
   }
