@@ -251,11 +251,14 @@
 .status-bar.android.punch-hole {
   height: 36px;
   font-size: 13px;
-  padding: 0 24px;
+  padding: 0 2px;
   align-items: center;
   padding-top: 0;
   position: relative;
   background-color: white;
+  justify-content: space-between;
+  color: #000;
+  z-index: 200;
 }
 
 /* Left/Right containers */
@@ -263,10 +266,8 @@
   display: flex;
   align-items: center;
   width: 100px;
-  /* Wider to accommodate time */
   justify-content: center;
   margin-left: 10px;
-  /* Approximate safe area margin */
 }
 
 .status-right {
@@ -278,16 +279,33 @@
   margin-right: 10px;
 }
 
-/* Android Adjustments */
-.status-bar.android .status-left {
+/* Android punch-hole - same layout as iPhone (time left, icons right) */
+.status-bar.android.punch-hole .status-left {
+  margin-left: 16px;
   justify-content: flex-start;
-  margin-left: 0;
+  width: auto;
+  flex: 0 0 auto;
 }
 
-.status-bar.android .status-right {
+.status-bar.android.punch-hole .status-right {
+  margin-right: 16px;
   justify-content: flex-end;
-  margin-right: 0;
+  width: auto;
+  flex: 0 0 auto;
 }
+
+.status-bar.android.punch-hole .status-left .time {
+  color: #000;
+  font-weight: 500;
+}
+
+.status-bar.android.punch-hole .status-right svg,
+.status-bar.android.punch-hole .status-right .icon-wifi svg,
+.status-bar.android.punch-hole .status-right .icon-battery svg {
+  color: #000;
+  fill: #000;
+}
+
 
 /* Icons */
 
