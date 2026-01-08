@@ -51,10 +51,6 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
     ? 'linear-gradient(135deg, #434343 0%, #1a1a1a 50%, #434343 100%)' // Shiny Black/Grey
     : '#1a1a1a'; // Default Dark for others
 
-  const chassisBoxShadow = isApple
-    ? '0 0 0 4px #2a2a2a, 0 20px 40px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.1)'
-    : '0 0 0 4px #333, 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.5)';
-
   // Button Style matching chassis - slightly differentiated
   const buttonBackground = isApple
     ? 'linear-gradient(90deg, #3a3a3a, #1a1a1a)' // Slightly darker than chassis for subtle difference
@@ -91,7 +87,6 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
           height: frameHeight,
           borderRadius: `${borderRadius}px`,
           background: chassisBackground, 
-          // boxShadow: chassisBoxShadow,
           padding: bezelSize,
           position: 'relative',
           transform: `scale(${scale})`,
@@ -100,7 +95,6 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
           boxSizing: 'border-box',
         }}
       > 
-        {/* Physical Buttons */}
         {/* Physical Buttons */}
         {(device.type === 'apple' || device.type === 'android') && (
             <>
