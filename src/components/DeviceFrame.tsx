@@ -43,7 +43,17 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
   if (device.notchType === 'bezel') borderRadius = 4; // Old phones
   if (device.type === 'tablet') borderRadius = 32; 
   if (device.type === 'special') borderRadius = 12; 
-  if (device.name.includes('Watch')) borderRadius = 34; 
+  if (device.name.includes('Watch')) borderRadius = 34;
+  
+  // Screen border radius (can override calculation for specific devices)
+  let screenBorderRadius = borderRadius - bezelSize;
+  if (device.name.includes('Watch')) {
+    // Apple Watch should have rounded corners (borderRadius is already set to 34, so calculate screen radius)
+    screenBorderRadius = borderRadius - bezelSize;
+    if (screenBorderRadius < 0) screenBorderRadius = 0;
+  } else if (device.type === 'special') {
+    screenBorderRadius = 0; // No border radius for special category devices
+  } 
 
   // Chassis Style
   const isApple = device.type === 'apple';
@@ -83,8 +93,27 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
         marginBottom: 20,
         transformOrigin: "top left",
         overflow: 'visible',
+        position: 'relative',
       }}
     >
+      {/* Device Info - Name and Dimensions */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: '-35px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          textAlign: 'center',
+          color: '#FF8303',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          fontSize: '18px',
+          fontWeight: 700,
+          whiteSpace: 'nowrap',
+          marginBottom: '10px',
+        }}
+      >
+        {device.name} - {device.width} × {device.height}
+      </div>
       <div 
         className="device-chassis"
         style={{
@@ -118,7 +147,7 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
         style={{
           width: screenWidth,
           height: screenHeight,
-          borderRadius: `${borderRadius - bezelSize}px`, 
+          borderRadius: `${screenBorderRadius}px`, 
           position: 'relative', 
           backgroundColor: '#fff',
           overflow: 'hidden',
