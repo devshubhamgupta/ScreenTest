@@ -3,10 +3,11 @@ import './App.css';
 import DeviceFrame from './components/DeviceFrame';
 import Sidebar from './components/Sidebar';
 import DeviceSelectorModal from './components/DeviceSelectorModal';
+import AnimatedBackground from './components/AnimatedBackground';
 import { devices } from './constants/devices';
 
 function App() {
-  const [url, setUrl] = useState('https://poxscan.io');
+  const [url, setUrl] = useState('https://stakeflow.live');
   const [selectedDevice, setSelectedDevice] = useState(devices.find(d => d.name === 'iPhone 15 Plus') || devices[0]);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [scale, setScale] = useState(1);
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <AnimatedBackground />
       <div className="simulator-workspace">
         <DeviceFrame
           url={url}

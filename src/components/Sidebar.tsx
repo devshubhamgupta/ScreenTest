@@ -1,5 +1,5 @@
 import React from 'react';
-import {  TabletSmartphone, Ratio } from 'lucide-react';
+import {  TabletSmartphone } from 'lucide-react';
 import './Sidebar.css';
 
 interface SidebarProps {

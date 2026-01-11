@@ -45,11 +45,17 @@
 }
 
 .sidebar-btn.active {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #ff7849;
+  border-color: #ff7849;
   color: white;
 }
 
 .sidebar-btn.active img {
   filter: brightness(0) invert(1);
+}
+
+.sidebar-btn:focus,
+.sidebar-btn:focus-visible {
+  outline: 2px solid #ff7849;
+  outline-offset: 2px;
 }

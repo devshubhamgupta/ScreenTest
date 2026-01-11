@@ -106,9 +106,9 @@
 }
 
 .device-card.active {
-  background-color: #007bff;
+  background-color: #ff7849;
   color: white;
-  border-color: #007bff;
+  border-color: #ff7849;
 }
 
 .device-icon {
