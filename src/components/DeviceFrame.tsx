@@ -31,8 +31,8 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
       bezelSize = 8; 
   } else if (device.type === 'tablet') {
     bezelSize = 25;
-  } else if (device.type === 'wearable') {
-    bezelSize = 4;
+  } else if (device.type === 'special' && device.name.includes('Watch')) {
+    bezelSize = 4; // Watches have smaller bezels
   }
 
   const frameWidth = screenWidth + bezelSize * 2;
