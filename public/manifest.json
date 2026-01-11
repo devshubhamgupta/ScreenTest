@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ScreenTest",
+  "name": "ScreenTest - Mobile Device Simulator",
   "version": "1.0.7",
-  "description": "Test websites on various mobile devices instantly.",
+  "description": "Test websites on 80+ mobile devices instantly. Preview your site on iPhone, Android, tablets, and more with realistic device frames, bezels, and status bars. Perfect for developers and designers testing responsive designs.",
   "permissions": [
     "declarativeNetRequest",
     "declarativeNetRequestWithHostAccess",
