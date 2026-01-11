@@ -7,7 +7,7 @@ import AnimatedBackground from './components/AnimatedBackground';
 import { devices } from './constants/devices';
 
 function App() {
-  const [url, setUrl] = useState('https://stakeflow.live');
+  const [url, setUrl] = useState('https://www.google.com/');
   const [selectedDevice, setSelectedDevice] = useState(devices.find(d => d.name === 'iPhone 15 Plus') || devices[0]);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [scale, setScale] = useState(1);
