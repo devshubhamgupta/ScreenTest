@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import DeviceSelectorModal from './components/DeviceSelectorModal';
 import AnimatedBackground from './components/AnimatedBackground';
 import { devices } from './constants/devices';
+import { trackDeviceSelection, trackOrientationChange, trackExtensionOpened, trackModalOpened } from './utils/analytics';
 
 function App() {
   const [url, setUrl] = useState('https://www.google.com/');
@@ -20,10 +21,17 @@ function App() {
     if (urlParam) {
       setUrl(decodeURIComponent(urlParam));
     }
+    
+    // Track extension opened
+    trackExtensionOpened(urlParam || undefined);
   }, []);
 
   const toggleOrientation = () => {
-    setOrientation((prev) => (prev === 'portrait' ? 'landscape' : 'portrait'));
+    setOrientation((prev) => {
+      const newOrientation = prev === 'portrait' ? 'landscape' : 'portrait';
+      trackOrientationChange(newOrientation);
+      return newOrientation;
+    });
   };
 
   useEffect(() => {
@@ -64,7 +72,10 @@ function App() {
       </div>
       
       <Sidebar 
-        onDeviceClick={() => setIsModalOpen(true)}
+        onDeviceClick={() => {
+          setIsModalOpen(true);
+          trackModalOpened('device_selector');
+        }}
         onRotateClick={toggleOrientation}
         orientation={orientation}
       />
@@ -72,7 +83,14 @@ function App() {
       <DeviceSelectorModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onSelect={setSelectedDevice}
+        onSelect={(device) => {
+          setSelectedDevice(device);
+          trackDeviceSelection(
+            device.name,
+            device.type,
+            `${device.width}x${device.height}`
+          );
+        }}
         selectedDevice={selectedDevice}
       />
     </div>
