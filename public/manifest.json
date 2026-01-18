@@ -5,8 +5,7 @@
   "description": "Test websites on 80+ mobile devices. Preview iPhone, Android, and tablets with realistic frames and responsive layouts.",
   "permissions": [
     "declarativeNetRequest",
-    "declarativeNetRequestWithHostAccess",
-    "storage"
+    "declarativeNetRequestWithHostAccess"
   ],
   "host_permissions": [
     "<all_urls>"
